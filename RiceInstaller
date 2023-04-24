@@ -110,9 +110,9 @@ clear
 
 logo "Downloading dotfiles"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
-printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
+printf "Cloning rice from https://github.com/Azathoth-11/dotfiles-1.git"
 cd
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+git clone --depth=1 https://github.com/Azathoth-11/dotfiles-1.git
 sleep 2
 clear
 
@@ -167,7 +167,6 @@ printf "Copying files to respective directories..\n"
 [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
 [ ! -d ~/.local/share/applications ] && mkdir -p ~/.local/share/applications
 [ ! -d ~/.local/share/fonts ] && mkdir -p ~/.local/share/fonts
-[ ! -d ~/.local/share/asciiart ] && mkdir -p ~/.local/share/asciiart
 
 for archivos in ~/dotfiles/config/*; do
   cp -R "${archivos}" ~/.config/
@@ -213,16 +212,6 @@ for archivos in ~/dotfiles/misc/fonts/*; do
   fi
 done
 
-for archivos in ~/dotfiles/misc/asciiart/*; do
-  cp -R "${archivos}" ~/.local/share/asciiart/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
 
 for archivos in ~/dotfiles/misc/firefox/*; do
   cp -R "${archivos}" ~/.mozilla/firefox/*.default-release/
@@ -263,15 +252,6 @@ if ! command -v eww >/dev/null 2>&1; then
 else
 	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
-
-########## ---------- Enabling MPD service ---------- ##########
-
-logo "Enabling mpd service"
-
-systemctl --user enable mpd.service
-systemctl --user start mpd.service
-printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
 
 ########## --------- Changing shell to zsh ---------- ##########
 
