@@ -21,10 +21,6 @@
 (defpoll calendar_month :interval "10h" "date '+%m'")
 (defpoll calendar_year :interval "10h" "date '+%Y'")
 
-;; Updates vars
-(defpoll UPDATES :interval "2m" `Updates --get-updates`)
-(defvar pac false)
-
 ;; Time
 (defpoll hour	:interval "1s"	"date '+%H'")
 (defpoll min	:interval "1s"	"date '+%M'")
